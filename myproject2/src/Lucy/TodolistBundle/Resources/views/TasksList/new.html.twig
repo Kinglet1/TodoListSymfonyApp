@@ -1,0 +1,16 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Новый список</h1>
+
+    <div class="content-row">
+        {{ form_start(form, {'attr': {'class': 'form-inline'}}) }}
+            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.submit, {'attr': {'class': 'btn btn-info'}}) }}
+        {{ form_end(form) }}
+    </div>
+
+    <a href="{{ path('taskslist') }}">
+        Отмена
+    </a>
+{% endblock %}

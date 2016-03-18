@@ -1,0 +1,78 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1><span>Редактирование задачи</span> {{ entity.title }}</h1>
+
+    <div class="content-row">
+        {{ form_start(edit_form, {'attr': {'class': 'task-form'}}) }}
+
+        <div class="form-group row">
+            <label class="col-sm-2 form-control-label">
+                {{ form_label(edit_form.title, 'Название', {}) }}
+            </label>
+            <div class="col-sm-10">
+                {{ form_widget(edit_form.title, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 form-control-label">
+                {{ form_label(edit_form.description, 'Описание', {}) }}
+            </label>
+            <div class="col-sm-10">
+                {{ form_widget(edit_form.description, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 form-control-label">
+                {{ form_label(edit_form.deadline, 'Дедлайн', {}) }}
+            </label>
+            <div class="col-sm-10 form-inline">
+                {{ form_widget(edit_form.deadline.year, {'attr': {'class': 'form-control'}}) }}
+                {{ form_widget(edit_form.deadline.month, {'attr': {'class': 'form-control'}}) }}
+                {{ form_widget(edit_form.deadline.day, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 form-control-label">
+                {{ form_label(edit_form.priority, 'Приоритет', {}) }}
+            </label>
+            <div class="col-sm-10">
+                {{ form_widget(edit_form.priority, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 form-control-label">
+                {{ form_label(edit_form.done, 'Сделано', {}) }}
+            </label>
+            <div class="col-sm-10">
+                {{ form_widget(edit_form.done, {'attr': {'class': ''}}) }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 form-control-label">
+                {{ form_label(edit_form.taskList, 'Привязать к списку', {}) }}
+            </label>
+            <div class="col-sm-10">
+                {{ form_widget(edit_form.taskList, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+
+        {{ form_widget(edit_form.submit, {'attr': {'class': 'btn btn-info'}}) }}
+        {{ form_end(edit_form) }}
+    </div>
+
+
+    {{ form_start(delete_form, {'attr': {'class': 'btn'}}) }}
+        {{ form_widget(delete_form.submit, {'attr': {'class': 'btn btn-danger'}}) }}
+    {{ form_end(delete_form) }}
+
+
+    <a href="{{ path('task') }}">
+        Назад
+    </a>
+{% endblock %}

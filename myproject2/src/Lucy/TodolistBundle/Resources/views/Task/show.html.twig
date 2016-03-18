@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>{{ entity.title }}</h1>
+
+    <div class="btn-group">
+        <a href="{{ path('task_edit', { 'id': entity.id }) }}" class="btn btn-default">
+            Редактировать
+        </a>
+
+        {{ form_start(delete_form, {'attr': {'class': 'btn'}}) }}
+            {{ form_widget(delete_form.submit, {'attr': {'class': 'btn btn-danger'}}) }}
+        {{ form_end(delete_form) }}
+    </div>
+
+    <table class="record_properties table table-hover">
+        <tbody>
+            <tr>
+                <th>Описание</th>
+                <td>{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th>Сделать до</th>
+                <td>{{ entity.deadline|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Приоритет</th>
+                <td>{{ entity.priority }}</td>
+            </tr>
+            <tr>
+                <th>Сделано</th>
+                <td>{{ entity.done }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('task') }}">
+        Назад к списку дел
+    </a>
+{% endblock %}
